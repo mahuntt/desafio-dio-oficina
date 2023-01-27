@@ -267,31 +267,6 @@ GO
 --EXEC sp_cadastro_os @ID_OS = 1, @Status_OS = 'Andamento', @Data_Entrega = '2022-01-30', @Descricao_OS = 
 --'Troca de pastilhas de freio', @Valor_OS = 800, @ID_Orcamento = 1
 GO
---DROP TABLE IF EXISTS OS_Funcionario
---GO
---CREATE TABLE OS_Funcionario (
---	ID_OS INT NOT NULL CONSTRAINT fk_ID_OS_Fun FOREIGN KEY (ID_OS) REFERENCES OrdemServico,
---	ID_Funcionario INT NOT NULL CONSTRAINT fk_ID_Fun_OS FOREIGN KEY (ID_Funcionario) REFERENCES Funcionario
---)
---GO
---CREATE PROCEDURE sp_cadastro_osfun (@ID_OS INT, @ID_Funcionario INT)
---AS
---BEGIN TRY
---	BEGIN TRANSACTION
---		INSERT INTO OS_Funcionario (ID_OS, ID_Funcionario) VALUES (@ID_OS, @ID_Funcionario)
---		IF @@ERROR = 0
---			COMMIT
---END TRY
---BEGIN CATCH
---	DECLARE @NUM INT = ERROR_NUMBER(), @SEVERIDADE INT = ERROR_SEVERITY(), @MSG VARCHAR(200) = ERROR_MESSAGE()
---	RAISERROR (@MSG, @SEVERIDADE, @NUM)
---	IF @@TRANCOUNT <> 0
---	BEGIN
---		ROLLBACK
---		RETURN
---	END
---END CATCH
-GO
 DROP TABLE IF EXISTS Peca
 GO
 CREATE TABLE Peca (
